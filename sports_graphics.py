@@ -5,7 +5,8 @@ from io import StringIO
 import dash
 from dash import Input, Output, dcc, html, Dash
 import numpy as np
-from data_manipulation import cleanDataforMap
+from data_manipulation import cleanDataForSeason, cleanDataforMap, getTrainingStats
+import dash_bootstrap_components as dbc
 
 df = pd.read_csv("data/sports_data.csv")
 
@@ -71,26 +72,9 @@ def create_pie_chart(rslt_df):
 
 
 # Second Graph
-df = pd.read_csv("data/sports_data.csv")
-
-df["Date"] = pd.to_datetime(df["Date"])
 
 
-def get_season(row):
-    month = row["Date"].month
-    if month in [12, 1, 2]:
-        season = "Winter"
-    elif month in [3, 4, 5]:
-        season = "Spring"
-    elif month in [6, 7, 8]:
-        season = "Summer"
-    elif month in [9, 10, 11]:
-        season = "Autumn"
-
-    return f"{season}"
-
-
-df["Season"] = df.apply(get_season, axis=1)
+df_season = cleanDataForSeason()
 
 
 # Creating filters
@@ -98,7 +82,7 @@ def buildSeasonFilter():
     filters = html.Div(
         [
             dcc.Dropdown(
-                options=df["Season"].unique(),
+                options=df_season["Season"].unique(),
                 value="Summer",
                 className="page2-dropdown",
                 id="dropdownSeason",
@@ -129,23 +113,7 @@ def buildSeasonGraph():
     Input("dropdownSeason", "value"),
 )
 def data(value):
-    df = pd.read_csv("data/sports_data.csv")
-    df["Date"] = pd.to_datetime(df["Date"])
-
-    def get_season(row):
-        month = row["Date"].month
-        if month in [12, 1, 2]:
-            season = "Winter"
-        elif month in [3, 4, 5]:
-            season = "Spring"
-        elif month in [6, 7, 8]:
-            season = "Summer"
-        elif month in [9, 10, 11]:
-            season = "Autumn"
-
-        return f"{season}"
-
-    df["Season"] = df.apply(get_season, axis=1)
+    df = cleanDataForSeason()
 
     filter_df = df[df["Season"] == value]
     rslt_df = pd.DataFrame(
@@ -173,25 +141,113 @@ map_df = cleanDataforMap()
 
 def buildMap():
     div = html.Div(
-        className="graph_div",
+        className="graph_div graph_div_map",
         children=[
             dcc.Store(id="memory-output3"),
             html.Br(),
-            html.Br(),
+            html.H4("Топ-3 мест Бега: "),
+            html.Ul(
+                id="map_list",
+                children=[
+                    html.Li(i)
+                    for i in map_df.sort_values(by=["Count"], ascending=False)["Place"][
+                        0:3
+                    ]
+                ],
+            ),
             dcc.Graph(
                 id="line-fig",
-                figure=go.Figure().add_trace(
+                figure=go.Figure()
+                .add_trace(
                     go.Scattergeo(
+                        locationmode="country names",
+                        locations=map_df["Country"],
                         lon=map_df["Coord"].str[1],
                         lat=map_df["Coord"].str[0],
+                        text=map_df["Count"],
                         marker=dict(
-                            size=map_df["Count"] * 4,
+                            size=map_df["Count"] * 10,
                             line_color="rgb(40,40,40)",
                             line_width=0.5,
                             sizemode="area",
                         ),
                     )
-                ),
+                )
+                .update_geos(scope="europe"),
+            ),
+        ],
+    )
+    return div
+
+
+# Fourth Graph ( Quick Stats)
+
+running_dict, strength_dict = getTrainingStats()
+
+
+def buildQuickFacts():
+    div = html.Div(
+        className="graph_div",
+        children=[
+            # dcc.Store(id="memory-output4"),
+            html.Br(),
+            html.Div(
+                children=[
+                    dbc.Row(
+                        [
+                            dbc.Col(
+                                html.Div(
+                                    children=[
+                                        html.H1(f"{next(iter(running_dict.values()))}"),
+                                        html.P(f"{next(iter(running_dict))}"),
+                                    ]
+                                )
+                            ),
+                            dbc.Col(
+                                html.Div(
+                                    children=[
+                                        html.Ul(
+                                            id="map_list",
+                                            children=[
+                                                html.Li(f"{k}: {v}")
+                                                for k, v in running_dict.items()
+                                                if k != "Total Hours Running"
+                                            ],
+                                        ),
+                                    ]
+                                )
+                            ),
+                        ]
+                    ),
+                    dbc.Row(
+                        [
+                            dbc.Col(
+                                html.Div(
+                                    children=[
+                                        html.H1(
+                                            f"{next(iter(strength_dict.values()))}"
+                                        ),
+                                        html.P(f"{next(iter(strength_dict))}"),
+                                    ]
+                                )
+                            ),
+                            dbc.Col(
+                                html.Div(
+                                    children=[
+                                        html.Ul(
+                                            id="map_list",
+                                            children=[
+                                                html.Li(f"{k}: {v}")
+                                                for k, v in strength_dict.items()
+                                                if k != "Total Hours Trained"
+                                            ],
+                                        ),
+                                    ]
+                                )
+                            ),
+                        ]
+                    ),
+                ]
             ),
         ],
     )

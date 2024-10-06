@@ -9,6 +9,7 @@ from sports_graphics import (
     buildSeasonGraph,
     buildSeasonFilter,
     buildMap,
+    buildQuickFacts,
 )
 import dash_bootstrap_components as dbc
 
@@ -22,6 +23,7 @@ graph2 = buildSeasonGraph()
 seasonFilter = buildSeasonFilter()
 
 map = buildMap()
+quickFacts = buildQuickFacts()
 
 register_page(
     __name__,  # calling page objects' self.name
@@ -95,10 +97,12 @@ def layout():
                     ),
                     dbc.Row(
                         [
+                            dbc.Col(html.Div(children=[html.H3("Места бега"), map])),
                             dbc.Col(
-                                html.Div(children=[html.H3("Места активностей: ")])
+                                html.Div(
+                                    children=[html.H3("Немного фактов: "), quickFacts]
+                                )
                             ),
-                            map,
                         ]
                     ),
                 ],

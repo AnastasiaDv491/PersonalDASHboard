@@ -254,3 +254,8 @@ nav>.container {
 #graph-id1 {
     width: 500px;
 }
+
+.graph_div_map {
+    display: inline-block;
+    width: 1000px;
+}
