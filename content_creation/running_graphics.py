@@ -1,10 +1,6 @@
 import pandas as pd
 import plotly.graph_objects as go
-from io import StringIO
-import dash
-from dash import Input, Output, dcc, html, Dash
-import numpy as np
-import dash_bootstrap_components as dbc
+from dash import dcc, html, Dash
 import plotly.express as px
 from data_processing.data_manipulation_running import (
     avg_hr_graph,

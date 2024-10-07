@@ -3,7 +3,6 @@ from dash import (
     register_page,
 )  # , callback # If you need callbacks, import it here.
 import dash_bootstrap_components as dbc
-import dash_core_components as dcc
 
 
 register_page(
@@ -18,7 +17,6 @@ first_card = dbc.Card(
         [
             html.H5("Спортивная Аналитика", className="card-title"),
             dbc.Button("перейти", color="primary", href="/sports"),
-            # dcc.Link(html.Button("LOG_VIEW"), href="/log_stream", refresh=True),
         ]
     )
 )
@@ -45,14 +43,12 @@ def layout():
         children=[
             html.Div(
                 children=[
-                    # html.Img(src="assets/police.jpg",
-                    # alt="Logo of the Belgian police force", height = 200, width = 200),
                     html.Br(),
                     html.Br(),
                     html.H2("Дэшборд спортивной аналитики.", className="graph_header"),
                     html.Br(),
                     html.Br(),
-                    html.P("Целями данного дэшборда являются:"),
+                    html.P("Цели разработки данного дэшборда:"),
                     html.Ul(
                         children=[
                             html.Li(
@@ -68,7 +64,7 @@ def layout():
                     ),
                     html.H4("Данные"),
                     html.P(
-                        "Данные для дэшборда были потянуты из приложения Garmin Connect, где фиксировались спортивные показатели. Временной интервал с 2020 по 2024 год используется в дэшборде. Это интервал, когда пользователь носил часы Garmin."
+                        "Данные для дэшборда были подтянуты из приложения Garmin Connect, где фиксировались спортивные показатели. В дэшборде используется временной интервал с 2020 по 2024 год. Это интервал, когда пользователь носил часы Garmin."
                     ),
                     cards,
                 ],

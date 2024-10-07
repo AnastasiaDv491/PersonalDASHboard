@@ -1,9 +1,7 @@
 import pandas as pd
 import plotly.graph_objects as go
-from io import StringIO
 import dash
-from dash import Input, Output, dcc, html, Dash
-import numpy as np
+from dash import Input, Output, dcc, html
 from data_processing.data_manipulation import (
     cleanDataForSeason,
     cleanDataforMap,

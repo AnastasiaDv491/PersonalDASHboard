@@ -15,19 +15,9 @@ def create_navbar():
                                     html.I(
                                         className="fa-brands fa-github"
                                     ),  # Font Awesome Icon
-                                    " Front End",  # Text beside icon
+                                    "Github",  # Text beside icon
                                 ],
-                                href="https://github.com/AnastasiaDv491/MDA-frontend-final",
-                                target="_blank",
-                            ),
-                            dbc.NavLink(
-                                [
-                                    html.I(
-                                        className="fa-brands fa-github"
-                                    ),  # Font Awesome Icon
-                                    " Back End ",  # Text beside icon
-                                ],
-                                href="https://github.com/AnastasiaDv491/Modern-Data-Analytics-Backend",
+                                href="https://github.com/AnastasiaDv491/PersonalDASHboard",
                                 target="_blank",
                             ),
                         ]

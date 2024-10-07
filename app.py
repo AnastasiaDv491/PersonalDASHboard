@@ -1,7 +1,7 @@
 import dash
 from dash import html, dcc
 import dash_bootstrap_components as dbc
-from navbar import create_navbar  # importing navbar code
+from content_creation.navbar import create_navbar  # importing navbar code
 from dash import dcc, html
 import os
 
