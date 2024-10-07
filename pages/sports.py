@@ -46,19 +46,40 @@ def layout():
                     html.Br(),
                     html.Hr(),
                     html.P(
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper purus non commodo consequat. Nam nec accumsan nibh, vitae congue odio. Duis eu eleifend lacus. Quisque interdum neque ut feugiat feugiat. Curabitur ac tortor enim. Nulla sagittis porttitor laoreet. Nullam ex leo, egestas a varius ac, suscipit ac mi. Praesent malesuada dolor non massa convallis, et fringilla purus ornare. Duis accumsan lorem vel dolor eleifend finibus. Aliquam scelerisque felis sed felis molestie volutpat in id velit. Ut vulputate nisi lorem, in efficitur eros ultricies nec. Nulla nunc augue, rutrum sit amet consequat eu, interdum a felis. Pellentesque enim erat, cursus vel nisl sit amet, facilisis scelerisque eros."
+                        "В данном разделе представлена общая спортивная статистика. Здесь мы знакомимся с данными, их динамикой и проводим аналитический анализ. В первой части представлены быстрые факты о беговых и силовых тренировок, так как они являются наиболее частыми в моем спортивном досуге. Также, предствлена карта всех мест бега и выбран топ-3 локации, исходя из частоты беговых тренировок."
                     ),
                     html.Hr(),
                     html.Br(),
+                    dbc.Row(
+                        [
+                            dbc.Col(html.Div(children=[html.H3("Места бега"), map])),
+                            dbc.Col(
+                                html.Div(
+                                    children=[
+                                        html.H3("Немного фактов за 2020-2024: "),
+                                        quickFacts,
+                                    ]
+                                )
+                            ),
+                        ]
+                    ),
+                    html.Hr(),
                     html.H2(children="Статистика", className="graph_header2"),
+                    html.P("Перед анализом были построенны следующие гипотезы: "),
                     html.Div(
                         children=[
                             html.Ul(
                                 id="my-list",
                                 children=[
-                                    html.Li("Thids is an item"),
-                                    html.Li("Thids is an item"),
-                                    html.Li("Thids is an item"),
+                                    html.Li(
+                                        "1. Разнообразие спортивных активностей увеличивается с течением времени."
+                                    ),
+                                    html.Li(
+                                        "2. Наиболее активные периоды активности - это лето и весна."
+                                    ),
+                                    html.Li(
+                                        "3. Со временем, силовые тренировки занимают большую часть спортивного досуга."
+                                    ),
                                 ],
                             )
                         ]
@@ -70,7 +91,7 @@ def layout():
                                     children=[
                                         html.H3("Анализ активностей по году"),
                                         html.P(
-                                            "С 2020 по 2024 год наблюдается эволюция в тренировка. Если изначально бег составлял большую часть физической нагрузки, то с 2022 года большее внимание стало удиляться силовым тренировкам. В период с 2023 по 2024 год процент силовых тренировок незначительно снижается, что связано с тренировками к полу-марафону, который состоялся в мае 2024 года."
+                                            "С 2020 по 2024 год наблюдается эволюция в тренировках. Если изначально бег составлял большую часть физической нагрузки, то с 2022 года большее внимание стало удиляться силовым тренировкам. Это подтверждает гипотезу №3. В период с 2023 по 2024 год процент силовых тренировок незначительно снижается, что связано с тренировками к полу-марафону, который состоялся в мае 2024 года."
                                         ),
                                         yearFilter,
                                         graph1,
@@ -87,7 +108,7 @@ def layout():
                                     children=[
                                         html.H3("Аналих сезонности активностей"),
                                         html.P(
-                                            "Многие спортивные активности поддаются влиянию сезонов. Например, летом бывает жарко и бегать на улице невыносимо. New York Times назвали осень самым благоприятным сезоном для бега. Исходя из полученных данных, мы видим, что, действительно процент беговых тренировок летом и зимой самый низкий. Также, стоит заметить, что весной самое большое разнообразие тренировок (например, йога, бассейн)."
+                                            "Многие спортивные активности поддаются влиянию сезонов. Например, летом бывает жарко и бегать на улице невыносимо. New York Times назвали осень самым благоприятным сезоном для бега. Исходя из полученных данных, мы видим, что, действительно процент беговых тренировок летом и зимой самый низкий, но пик активности был весной, а не осенью. Это может быть связано с большой загруженностью в начале учебного года. Таким образом, гипотеза №2 опровегнута. Также, стоит заметить, что весной самое большое разнообразие тренировок (например, йога, бассейн)."
                                         ),  # https://www.nytimes.com/2023/09/28/well/move/fall-running-training.html
                                         seasonFilter,
                                         graph2,
@@ -95,16 +116,6 @@ def layout():
                                     className="pie_graph_container",
                                     style={"display": "inline-block"},
                                 ),
-                            ),
-                        ]
-                    ),
-                    dbc.Row(
-                        [
-                            dbc.Col(html.Div(children=[html.H3("Места бега"), map])),
-                            dbc.Col(
-                                html.Div(
-                                    children=[html.H3("Немного фактов: "), quickFacts]
-                                )
                             ),
                         ]
                     ),

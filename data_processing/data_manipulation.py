@@ -108,15 +108,15 @@ def getTrainingStats():
 
     # create dict
     running_dict = dict()
-    running_dict["Total Hours Running"] = running_time_total
-    running_dict["Avg. Heart Rate"] = running_avg_hr
-    running_dict["Avg. Calories Burnt"] = running_avg_calories
-    running_dict["Avg. Speed"] = running_avg_speed
+    running_dict["Кол.во Часов Бега"] = running_time_total
+    running_dict["Срд. Частота Сердечных Сокращений"] = running_avg_hr
+    running_dict["Срд. Расход Калорий"] = running_avg_calories
+    running_dict["Срд. Скорость"] = running_avg_speed
 
     strength_dict = dict()
-    strength_dict["Total Hours Trained"] = strength_total
-    strength_dict["Avg. Heart Rate"] = strength_avg_hr
-    strength_dict["Avg. Calories"] = strength_avg_calories
-    strength_dict["Avg. Time Trained"] = strength_avg_time
+    strength_dict["Кол.во Часов Силовых тренировок"] = strength_total
+    strength_dict["Срд. Частота Сердечных Сокращений"] = strength_avg_hr
+    strength_dict["Срд. Расход Калорий"] = strength_avg_calories
+    strength_dict["Срд. Продолжительность тренировки"] = strength_avg_time
 
     return running_dict, strength_dict

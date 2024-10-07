@@ -214,7 +214,7 @@ def buildQuickFacts():
                                             children=[
                                                 html.Li(f"{k}: {v}")
                                                 for k, v in running_dict.items()
-                                                if k != "Total Hours Running"
+                                                if k != "Кол.во Часов Бега"
                                             ],
                                         ),
                                     ]
@@ -242,7 +242,8 @@ def buildQuickFacts():
                                             children=[
                                                 html.Li(f"{k}: {v}")
                                                 for k, v in strength_dict.items()
-                                                if k != "Total Hours Trained"
+                                                if k
+                                                != "Кол.во Часов Силовых тренировок"
                                             ],
                                         ),
                                     ]

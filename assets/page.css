@@ -265,3 +265,22 @@ nav>.container {
 .running_graphs {
     height: 500px;
 }
+
+/* Home Buttons */
+
+.home_page_button_container {
+    justify-content: space-around !important;
+    margin-top: 100px !important;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #08c;
+    ;
+    border-color: #08c;
+    ;
+}
+
+.card-body {
+    text-align: center;
+}
