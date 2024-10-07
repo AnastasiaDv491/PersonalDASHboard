@@ -123,54 +123,6 @@ nav>.container {
     padding-left: 20px;
 }
 
-/* Styling datepicker */
-.SingleDatePickerInput.SingleDatePickerInput_1.SingleDatePickerInput__withBorder.SingleDatePickerInput__withBorder_2.input:valid {
-    border-radius: 20px;
-    background: #08c;
-}
-
-.DateInput_input.DateInput_input_1 {
-    background: #08c;
-    color: white;
-}
-
-.SingleDatePickerInput__withBorder {
-    border-radius: 20px;
-    border: 1px solid #ccc !important;
-    background-color: #08c;
-}
-
-
-
-.DateInput_input,
-.DateInput_input_1 {
-    Height: 34px !important;
-    Width: 100% !important;
-    border-radius: inherit;
-}
-
-.DateInput_input__focused {
-    border: 0;
-}
-
-.CalendarDay__selected,
-.CalendarDay__selected:active,
-.CalendarDay__selected:hover {
-    background: #08c;
-    border: #08c;
-}
-
-.filters_parent {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    grid-template-rows: 1fr;
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
-}
-
-#my-date-picker-single {
-    margin-top: 10px;
-}
 
 .DateInput_input {
     border-radius: 20px;
@@ -189,49 +141,7 @@ nav>.container {
     margin: auto;
 }
 
-/* Today page */
 
-.today-parent-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 4fr);
-    grid-template-rows: repeat(2, 4fr);
-    grid-column-gap: 20px;
-    grid-row-gap: 20px;
-}
-
-.today-children-grid {
-    background-color: #244BA6;
-    width: 295px;
-    height: 146px;
-    border-radius: 20px;
-    padding: 20px;
-
-}
-
-.flex-parent {
-    justify-content: space-between;
-}
-
-.today-children-grid .event-type {
-    color: #08c;
-    font-weight: 700;
-}
-
-.event-meta-grid {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.event-meta-grid>p {
-    color: white;
-}
-
-.event-name {
-    color: white;
-    font-size: 24px;
-    font-weight: 700;
-}
 
 /* Interactive maps */
 
