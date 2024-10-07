@@ -38,8 +38,7 @@ def create_navbar():
                 children=[
                     dbc.NavbarBrand("Домой", href="/"),
                     dbc.NavbarBrand("Спорт", href="/sports"),
-                    dbc.NavbarBrand("Учёба", href="/academics"),
-                    # dbc.NavbarBrand("Map", href="/map")
+                    dbc.NavbarBrand("Бег", href="/running"),
                 ]
             ),
         ]

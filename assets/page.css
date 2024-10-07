@@ -259,3 +259,9 @@ nav>.container {
     display: inline-block;
     width: 1000px;
 }
+
+/* Running graphs styling */
+
+.running_graphs {
+    height: 500px;
+}

@@ -1,11 +1,14 @@
-# Data: fakbars, events, mic_locations
 import pandas as pd
 import plotly.graph_objects as go
 from io import StringIO
 import dash
 from dash import Input, Output, dcc, html, Dash
 import numpy as np
-from data_manipulation import cleanDataForSeason, cleanDataforMap, getTrainingStats
+from data_processing.data_manipulation import (
+    cleanDataForSeason,
+    cleanDataforMap,
+    getTrainingStats,
+)
 import dash_bootstrap_components as dbc
 
 df = pd.read_csv("data/sports_data.csv")
